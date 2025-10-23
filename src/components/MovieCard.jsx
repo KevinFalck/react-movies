@@ -14,9 +14,9 @@ const MovieCard = ({ movie }) => {
             />
             <Card.Body>
               <Card.Title>{movie.original_title}</Card.Title>
-              <Card.subtitle>
+              <Card.Subtitle>
                 Sortie le {new Date(movie.release_date).toLocaleDateString()}
-              </Card.subtitle>
+              </Card.Subtitle>
               <Card.Text>{movie.overview}</Card.Text>
               <Card.Text>
                 Note moyenne: {movie.vote_average}
