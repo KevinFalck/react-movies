@@ -1,0 +1,11 @@
+.card-img-top {
+  height: 400px;
+  object-fit: cover;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
