@@ -48,16 +48,12 @@ function App() {
     return <ErrorMessage message={error} />;
   }
 
-  if (movie) {
-    return (
-      <>
-        <MovieCard movie={movie} />
-        <CommentsList comments={comments} />
-      </>
-    );
-  }
-
-  return;
+  return (
+    <>
+      <MovieCard movie={movie} />
+      <CommentsList comments={comments} />
+    </>
+  );
 }
 
 export default App;

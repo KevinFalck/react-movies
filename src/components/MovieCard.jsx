@@ -13,14 +13,14 @@ const MovieCard = ({ movie }) => {
               alt={movie?.original_title}
             />
             <Card.Body>
-              <Card.Title>{movie?.original_title}</Card.Title>
+              <Card.Title>{movie.original_title}</Card.Title>
+              <Card.subtitle>
+                Sortie le {new Date(movie.release_date).toLocaleDateString()}
+              </Card.subtitle>
+              <Card.Text>{movie.overview}</Card.Text>
               <Card.Text>
-                Sortie le {new Date(movie?.release_date).toLocaleDateString()}
-              </Card.Text>
-              <Card.Text>{movie?.overview}</Card.Text>
-              <Card.Text>
-                Note moyenne: {movie?.vote_average}
-                {movie?.vote_count && ` (${movie?.vote_count} votes)`}
+                Note moyenne: {movie.vote_average}
+                {movie.vote_count && ` (${movie.vote_count} votes)`}
               </Card.Text>
             </Card.Body>
           </Card>
