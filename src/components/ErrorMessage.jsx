@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Alert } from "react-bootstrap";
 
 const ErrorMessage = ({ message }) => {
   return (
