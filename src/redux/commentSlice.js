@@ -9,12 +9,15 @@ const commentSlice = createSlice({
     addComment: (state, action) => {
       state.push({
         id: Date.now(),
-        comment: action.payload,
+        comment: action.payload.comment,
         note: action.payload.note,
       });
     },
     deleteComment: (state, action) => {
-      return state.filter((comment) => comment.id !== action.payload);
+      const index = state.findIndex((comment) => comment.id === action.payload);
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
     },
   },
 });

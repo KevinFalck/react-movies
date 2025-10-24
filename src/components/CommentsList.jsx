@@ -1,26 +1,43 @@
 import React from "react";
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteComment } from "../redux/commentSlice";
+import { ListGroup, ListGroupItem, Button, Alert } from "react-bootstrap";
 
-const CommentsList = ({ comments }) => {
+const CommentsList = () => {
+  const dispatch = useDispatch();
+  const comments = useSelector((state) => state.comments);
+
+  const handleDelete = (commentId) => {
+    dispatch(deleteComment(commentId));
+  };
+
   return (
-    <Container>
-      <Row className="justify-content-center mt-4">
-        <Col xs={12} md={8} lg={6}>
-          <h2 className="card-text">Commentaires</h2>
-          {comments && comments.length > 0 ? (
-            <ListGroup>
-              {comments.map((comment) => (
-                <ListGroup.Item key={comment.id} className="comment-item">
-                  {comment.comment}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          ) : (
-            <p>Aucun commentaire pour le moment.</p>
-          )}
-        </Col>
-      </Row>
-    </Container>
+    <>
+      {comments && comments.length > 0 ? (
+        <ListGroup>
+          {comments.map((comment) => (
+            <ListGroupItem
+              key={comment.id}
+              className="d-flex justify-content-between align-items-start"
+            >
+              <div className="flex-grow-1 me-3">
+                <h6 className="mb-1">Note: {comment.note}/5</h6>
+                <p className="mb-1 text-break">{comment.comment}</p>
+              </div>
+              <Button
+                variant="danger"
+                size="sm"
+                onClick={() => handleDelete(comment.id)}
+              >
+                Supprimer
+              </Button>
+            </ListGroupItem>
+          ))}
+        </ListGroup>
+      ) : (
+        <Alert variant="info">Aucun commentaire pour le moment.</Alert>
+      )}
+    </>
   );
 };
 
